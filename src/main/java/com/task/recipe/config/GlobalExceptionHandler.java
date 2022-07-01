@@ -15,18 +15,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {RecipeNotFoundException.class})
     @ResponseBody
-    protected ResponseEntity<String> handleNotFoundException(RecipeNotFoundException ex,
-                                                                             WebRequest request) {
+    protected ResponseEntity<String> handleNotFoundException(RecipeNotFoundException ex) {
         log.error(ex.getMessage());
-        return new ResponseEntity<String>(ex.toString(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex.toString(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = {RuntimeException.class})
     @ResponseBody
-    protected ResponseEntity<String> handleRuntimeException(RuntimeException ex,
-                                                             WebRequest request) {
+    protected ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
         log.error(ex.getMessage());
-        return new ResponseEntity<String>(ex.toString(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

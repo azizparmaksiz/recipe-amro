@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-
 public class RecipeServiceTest {
 
     @Autowired
@@ -285,18 +284,17 @@ public class RecipeServiceTest {
 
 
     private RecipeDto createDummyRecipe() {
-        RecipeDto recipeDto = new RecipeDto(null,
+        return new RecipeDto(null,
                 "browni",
                 true,
                 3,
                 new ArrayList(List.of(
                         new IngredientDto("cacao", 50.0, "g"),
                         new IngredientDto("flour", 200.0, "g"),
-                        new IngredientDto("coco mil", 0.1, "lt"),
+                        new IngredientDto("coco milk", 0.1, "lt"),
                         new IngredientDto("banana", 300.0, "g")
                 )),
-                "smash banana, then add cacao and coco mil then and flour");
-        return recipeDto;
+                "smash banana, then add cacao and coco milk then and flour");
     }
 
 }

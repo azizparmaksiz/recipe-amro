@@ -91,7 +91,7 @@ public class RecipeServiceImpl implements RecipeService {
         if (criteriaList.isEmpty()) {
             query.addCriteria(criteria);
         } else {
-            query.addCriteria(criteria.andOperator(criteriaList.toArray(new Criteria[criteriaList.size()])));
+            query.addCriteria(criteria.andOperator(criteriaList));
         }
         List<Recipe> recipes = mongoTemplate.find(query, Recipe.class);
         Type listType = new TypeToken<List<RecipeDto>>() {

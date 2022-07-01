@@ -24,7 +24,7 @@ public class RecipeController {
             " <br/> When providing valid recipe id this rest service will update the recipe." +
             " <br/>  With empty or not valid id this rest service will create new recipe ",
             nickname = "SaveRecipe")
-    @ApiResponses(value = { @ApiResponse(code = 201, message = "Success|OK")})
+    @ApiResponses(value = { @ApiResponse(code = 201, message = "Success|Created")})
     @PostMapping()
     public ResponseEntity<String> save(@RequestBody RecipeDto recipeDto) {
 
@@ -44,7 +44,7 @@ public class RecipeController {
             " <br/> <strong>instr</strong>:  Search with Instruction '" +
             " <br/>  With empty param rest service will return the all recipes ",
             nickname = "FilterRecipe")
-    @ApiResponses(value = { @ApiResponse(code = 201, message = "Success|Created")})
+    @ApiResponses(value = { @ApiResponse(code = 201, message = "Success|Ok")})
     @GetMapping()
     public ResponseEntity<List<RecipeDto>> filter(
             @RequestParam(required = false, name = "vegi") Boolean vegetarian,
@@ -64,7 +64,7 @@ public class RecipeController {
     @GetMapping("/{recipeId}")
     public ResponseEntity<RecipeDto> detail(@PathVariable String recipeId) {
 
-        return new ResponseEntity<RecipeDto>(recipeService.detail(recipeId), HttpStatus.OK);
+        return new ResponseEntity<>(recipeService.detail(recipeId), HttpStatus.OK);
     }
 
     @ApiOperation(value = "", notes = "<body>This rest service provide you to deelte recipe with id.</body>",
